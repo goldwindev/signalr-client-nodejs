@@ -83,11 +83,19 @@ function negotiateProxies(baseUrl, hubNames, onSuccess, onError, _client) {
         return;
     }
 
-    var negotiateData = "";
-    var negotiateUrl = baseUrl + "/negotiate?" + querystring.stringify({
+    var qs = {
         connectionData: JSON.stringify(cleanedHubs),
         clientProtocol: 1.5
-    });
+    };
+
+    if (_client.queryString) {
+        for (var propName in _client.queryString) {
+            qs[propName] = _client.queryString[propName];
+        }
+    }
+
+    var negotiateData = "";
+    var negotiateUrl = baseUrl + "/negotiate?" + querystring.stringify(qs);
     var negotiateUrlOptions = url.parse(negotiateUrl, true);
 
     var negotiateFunction = function (res) {
@@ -437,7 +445,7 @@ function clientInterface(baseUrl, hubs, reconnectTimeout, doNotStart) {
 		var cb = callCallbacks[messageId];
 		if (cb) cb(err, result);
 	}
-	
+
     client.start = function () {
         _client.getBinding();
     };
