@@ -1,0 +1,24 @@
+{
+    "name": "signalr-client",
+    "version": "0.0.18",
+    "description": "signalR client for node.js",
+    "license": "MIT",
+    "url" : "https://github.com/goldwindev/signalr-client-nodejs/",
+    "main": "./index.js",
+    "keywords": [
+        "signalr",
+        "websockets"
+    ],
+    "author": {
+        "name": "Matthew Whited",
+        "email": "matt@whited.us",
+        "url": "https://www.linkedin.com/in/mwwhited"
+    },
+    "dependencies": {
+        "websocket": "^1.0.26"
+    },
+    "engines": {
+        "node": "*"
+    }
+}
+
